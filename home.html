@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="homestyle.css">
+    <title>Home</title>
+</head>
+<body>
+    
+    <div id="user">
+            <h1>Welcome User</h1>
+    </div>
+    <div id="box"> 
+        <button class="hm" onclick="userlogin()" id="login">Login</button>
+        <button class="hm" onclick="usersignup()" id="signup"> Signup</button>
+    
+    
+    </div>
+</div>
+<script>
+  
+        document.getElementById('login').addEventListener('click', function userlogin() {
+            window.open('index.html', '_blank');
+        });
+        document.getElementById('signup').addEventListener('click', function usersignup() {
+            window.open('signup.html', '_blank');
+        });
+    
+</script>
+</body>
+</html>
