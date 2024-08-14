@@ -1,0 +1,32 @@
+document.getElementById('add-question').addEventListener('click', function() {
+    const questionContainer = document.createElement('div');
+    questionContainer.classList.add('question');
+    questionContainer.innerHTML = `
+        <label for="question-text">Question:</label>
+        <input type="text" class="question-text" required>
+        <label for="option1">Option 1:</label>
+        <input type="text" class="option" required>
+        <label for="option2">Option 2:</label>
+        <input type="text" class="option" required>
+        <label for="option3">Option 3:</label>
+        <input type="text" class="option" required>
+        <label for="option4">Option 4:</label>
+        <input type="text" class="option" required>
+        <label for="correct-answer">Correct Answer:</label>
+        <input type="text" class="correct-answer" required>
+    `;
+    document.getElementById('questions-container').appendChild(questionContainer);
+});
+ 
+document.getElementById('quiz-form').addEventListener('submit', function(event) {
+    event.preventDefault();
+    const questions = [];
+    document.querySelectorAll('.question').forEach(questionElement => {
+        const questionText = questionElement.querySelector('.question-text').value;
+        const options = Array.from(questionElement.querySelectorAll('.option')).map(option => option.value);
+        const correctAnswer = questionElement.querySelector('.correct-answer').value;
+        questions.push({ questionText, options, correctAnswer });
+    });
+    localStorage.setItem('quiz', JSON.stringify(questions));
+    alert('Quiz saved successfully!');
+});

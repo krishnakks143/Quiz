@@ -35,75 +35,108 @@
             <h1>Quiz Question</h1>
         </div>
         <span id="add-quest-p">
-            <button id="add-quest-c">Add Quiz Question</button>
+            <button id="add-quest-c" onclick="addquestion()">Add Quiz Question</button>
         </span>
         <div id=question-parent>
-            <div class="box">
-            <h2>1: What is full form HTML?</h1>
-            <ol class="option">
-                <div class="op">
-                <button class="butt">1. abc</button>
-                <button class="butt">2. abc</button>
-                <button class="butt">3. abc</button>
-                <button class="butt">4. abc</button>
+            <div class="question-container">
+                <h3>What is the capital of France?</h3>
+                <form>
+                    <label><input type="radio" name="answer" > Paris</label>
+                    <label><input type="radio" name="answer" > London</label>
+                    <label><input type="radio" name="answer" > Rome</label>
+                    <label><input type="radio" name="answer" > Berlin</label>
+                </form>
             </div>
-            </ol>
-        </div>
-        <div class="box">
-            <h2>2: What is full form CSS?</h1>
-                
-                <ol class="option">
-                    <div class="op">
-                        <button class="butt">1. abc</button>
-                        <button class="butt">2. abc</button>
-                        <button class="butt">3. abc</button>
-                        <button class="butt">4. abc</button>
-                    </div>
-            
-            </ol>
-        
-        </div>
-        <div class="box">
-            <h2>3: What is full form JS?</h1>
-                <ol class="option">
-                    <div class="op">
-                        <button class="butt">1. abc</button>
-                        <button class="butt">2. abc</button>
-                        <button class="butt">3. abc</button>
-                        <button class="butt">4. abc</button>
-                    </div>
-            </ol>
-        </div>
-        <div class="box">
-            <h2>4: What is full form HTTPs?</h1>
-                <ol class="option">
-                    <div class="op">
-                        <button class="butt">1. abc</button>
-                        <button class="butt">2. abc</button>
-                        <button class="butt">3. abc</button>
-                        <button class="butt">4. abc</button>
-                    </div>
-            </ol>
-        </div>
-        <div class="box">
-            <h2>5: What is full form RAM?</h1>
-            <ol class="option">
-                <div class="op">
-                    <button class="butt">1. abc</button>
-                    <button class="butt">2. abc</button>
-                    <button class="butt">3. abc</button>
-                    <button class="butt">4. abc</button>
-                </div>
-            </ol>
-        </div>
-        </div>
+           
+            </div>
+            <div id="kks">
+             <div id="butt1"><button onclick="analyzeAnswers()"> Submit</button></div>
+            <div id="butt2"><button onclick="loadQuestions()">Add</button></div>
+            <div id="butt3"><button id="clear" onclick="clear_screen()">Clear</button></div>
+           
+            </div>
         <div id="foot">
             <footer>
                 <p>Copywrite 2024</p>
             </footer>
         </div>
     </div>
+<script>
 
+    function clear_screen()
+    {
+        let clearButton = document.querySelector("#clear");
+        if (clearButton) {
+            clearButton.addEventListener('click', () => {
+                const quizContainer = document.querySelector("#question-parent");
+                quizContainer.innerHTML = ''; 
+              //  localStorage.removeItem('questions'); 
+            });
+        } else {
+            console.error("#clear-questions element not found");
+        }
+    }
+
+
+
+    function addquestion() {
+        let add = document.querySelector("#add-quest-c");
+        if (add) {
+            add.addEventListener('click', () => {
+                window.open('add.html', '_blank');
+            });
+        } else {
+            console.error("#add-quest-c element not found");
+        }
+    }
+    
+    function loadQuestions() {
+        const questions = JSON.parse(localStorage.getItem('questions')) || [];
+        const quizContainer = document.querySelector("#question-parent");
+        quizContainer.innerHTML = ''; 
+    
+        questions.forEach((q, index) => {
+            const questionContainer = document.createElement('div');
+            questionContainer.classList.add('question-container');
+            questionContainer.innerHTML = `
+                <h3>${q.question}</h3>
+                <form>
+                    ${q.options.map((opt, i) => ` 
+                        <label>
+                            <input type="radio" name="q${index}" value="${opt}">
+                            ${opt}
+                        </label><br>
+                    `).join('')}
+                </form>
+            `;
+            
+            quizContainer.appendChild(questionContainer);
+        });
+    }
+    
+    function analyzeAnswers() {
+        const questions = JSON.parse(localStorage.getItem('questions')) || [];
+        let score = 0;
+    
+       
+        const selectedAnswers = Array.from(document.querySelectorAll('input[type="radio"]:checked'))
+            .map(input => ({ questionIndex: input.name.replace('q', ''), answerValue: input.value }));
+    
+        selectedAnswers.forEach(answer => {
+            const question = questions[answer.questionIndex];
+            if (question) {
+               
+                if (answer.answerValue === question.correctAnswer) {
+                    score++;
+                }
+            }
+        });
+        console.log(score);
+        alert(`Your score is ${score} out of ${questions.length}`);
+    }
+    
+
+</script>
 
 </body>
 </html>

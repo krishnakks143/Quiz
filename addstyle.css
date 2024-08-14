@@ -1,0 +1,40 @@
+body{
+    background-color: #6482AD;
+    background-repeat: no-repeat;
+}
+.question-container
+{   
+   
+    font-size: 20px;
+        text-align: center;
+        margin-top: 80px;
+        padding-top: 20px;
+}
+#q1
+{
+    text-align: left;
+}
+#forming
+{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+.boxing{
+    width: 150px;
+    margin: auto;
+    height: 20px;
+}
+#question{
+    width: 300px;
+}
+.question-container button
+{
+    width: 150px;
+    height: 40px;
+}
+#ques{
+    width: 500px;
+    height: 40px;
+}
+  

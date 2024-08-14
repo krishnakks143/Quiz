@@ -11,6 +11,23 @@ body{
     margin-left: 20px;
     width: 10px;
 }
+.question-container {
+    border: 1px solid #ddd;
+    padding: 15px;
+    border-radius: 5px;
+    margin: 20px 0;
+    background-color: #f9f9f9;
+    margin-left: 30px;
+    height: 280px;
+}
+.question-container h3 {
+    margin: 0 0 10px;
+}
+.question-container label  {
+    display: block;
+    cursor: pointer;
+    margin: 5px 0;
+}
 #user-id{
    
     display: flex;
@@ -32,18 +49,8 @@ body{
     border-radius: 4px;
     border: 2px solid #F6EACB;
 }
-.box{
-    width: 70%;
-    margin-top: 50px;
-    margin-left: 40px;
-    color: black;
-    border: 2px solid #0b090a;
-    background-color: #7FA1C3;
-    border-radius: 8px;
-}
-.box h2{
-    margin-left: 10px;
-}
+
+
 .option{
     font-size: 20px;
     margin-left: 20px;
@@ -72,20 +79,26 @@ body{
 {
     border-radius: 5px;
 }
-.butt
-{
-    background-color: #7FA1C3;
-    border: none;
-    text-align: left;
 
-}
 .op{
     display: flex;
     flex-direction: column;
     text-align: left;
 
 }
-.butt:hover {
-    background-color: #72afec; /* Change background color on hover */
-    transform: scale(1.05); /* Slightly increase size on hover */
+
+
+#butt1{
+    margin-left: 50PX;
+    width: 100PX;
+}
+#butt3{
+    margin-left: 40PX;
+    width: 100PX;
+}
+#kks
+{
+    display: flex;
+    margin-left: 50px;
+   
 }

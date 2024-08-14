@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Question</title>
+    <link rel="stylesheet" href="addstyle.css">
+    <script src="addscript.js"></script>
+</head>
+<body>
+
+
+    <div class="question-container">
+    
+        <form id="forming">
+            <label for="question" > Question:</label>
+            <input type="text" id="ques" class="boxing" >
+            <label>Option 1</label>
+            <input id="a" class="boxing" type="Input" name="answer" value="">
+            <label>Option 2</label>
+            <input id="b" class="boxing" type="input" name="answer" value="">
+            <label>Option 3</label>
+            <input id="c" class="boxing" type="input" name="answer" value="">
+            <label>Option 4</label>
+            <input id="d" class="boxing" type="input" name="answer" value="">
+            <label>Correct Answer</label>
+            <input id="ca" class="boxing" type="input" name="answer" value="">
+        </form>
+        <button class="button" id="butt" onclick="submit_value()" >Submit</button>
+        <button class="button" id="new-question" onclick="new_q(),adding()" >Add New Question</button>
+    </div>
+
+    <script>
+            function new_q()
+            {
+                submit_value();
+                location.reload();
+
+            }
+            function submit_value()
+            {       
+                const question = {
+                    question: document.querySelector("#ques").value,
+                    options: [
+                        document.querySelector("#a").value,
+                        document.querySelector("#b").value,
+                        document.querySelector("#c").value,
+                        document.querySelector("#d").value
+                    ],
+                    correctAnswer: document.querySelector("#ca").value
+                };
+                    let questions =JSON.parse(localStorage.getItem('questions')) || [];
+                    questions.push(question);
+                    localStorage.setItem('questions',JSON.stringify(questions));
+            }
+            document.querySelector("#butt").addEventListener('click',function adding()
+            {
+                window.open('question.html','_blank');
+            })
+
+    </script>
+</body>
+</html>
