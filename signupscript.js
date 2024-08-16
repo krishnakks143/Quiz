@@ -14,8 +14,13 @@ function valueaccept()
     } else {
         alert('Please enter both email and password.');
     }
-    document.querySelector('#butt').addEventListener('click',function ()
-    {
-        window.open('index.html','_blank');
-    })
+    
+       
+    
+}
+
+
+function login()
+{
+    window.open('index.html');
 }

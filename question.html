@@ -35,7 +35,7 @@
             <h1>Quiz Question</h1>
         </div>
         <span id="add-quest-p">
-            <button id="add-quest-c" onclick="addquestion()">Add Quiz Question</button>
+            <button id="add-quest-c" onclick="addquestion()">Add More Quiz Question</button>
         </span>
         <div id=question-parent>
             <div class="question-container">
@@ -51,7 +51,7 @@
             </div>
             <div id="kks">
              <div id="butt1"><button onclick="analyzeAnswers()"> Submit</button></div>
-            <div id="butt2"><button onclick="loadQuestions()">Add</button></div>
+            <div id="butt2"><button onclick="loadQuestions()">Add Question</button></div>
             <div id="butt3"><button id="clear" onclick="clear_screen()">Clear</button></div>
            
             </div>
@@ -67,11 +67,11 @@
     {
         let clearButton = document.querySelector("#clear");
         if (clearButton) {
-            clearButton.addEventListener('click', () => {
+         
                 const quizContainer = document.querySelector("#question-parent");
                 quizContainer.innerHTML = ''; 
               //  localStorage.removeItem('questions'); 
-            });
+          
         } else {
             console.error("#clear-questions element not found");
         }
@@ -82,9 +82,9 @@
     function addquestion() {
         let add = document.querySelector("#add-quest-c");
         if (add) {
-            add.addEventListener('click', () => {
+           
                 window.open('add.html', '_blank');
-            });
+            
         } else {
             console.error("#add-quest-c element not found");
         }
@@ -132,10 +132,13 @@
             }
         });
         console.log(score);
+        const quizContainer = document.querySelector("#question-parent");
+        quizContainer.innerHTML = ''; 
+        const questionContainer = document.createElement('div');
+        questionContainer.innerHTML = `<h1> Hello Here is your score: ${score} </h1>`
+        quizContainer.appendChild(questionContainer);
         alert(`Your score is ${score} out of ${questions.length}`);
     }
-    
-
 </script>
 
 </body>

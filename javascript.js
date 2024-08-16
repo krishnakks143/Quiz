@@ -8,12 +8,16 @@ function logindeatils()
         if (user) {
             localStorage.setItem('loggedInUser', JSON.stringify(user));
             alert('Login successful!');
-            document.querySelector("#butt").addEventListener('click',()=>{
-                window.open('question.html','_blank');
-            })
+        
+                window.open('question.html');
+           
         } else {
             alert('Invalid email or password.');
         }
    
     }
+}
+function signup()
+{
+    window.open('signup.html');
 }
